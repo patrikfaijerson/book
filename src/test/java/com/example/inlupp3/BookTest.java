@@ -58,7 +58,7 @@ class BookTest {
 	void verifyIsbnNullIsNotOK() {
 		Book book1 = new Book();
 		boolean isIsbnOk = book1.checkIban(null);
-		assertTrue(isIsbnOk);
+		assertFalse(isIsbnOk);
 
 }
 
