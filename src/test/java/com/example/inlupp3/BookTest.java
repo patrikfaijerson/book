@@ -17,7 +17,7 @@ class BookTest {
 	void verifyIsbnTenDigitsIsOK() {
 		Book book1 = new Book();
 		boolean isIsbnOk = book1.checkIban("1234567890");
-		assertTrue(isIsbnOk);
+		assertFalse(isIsbnOk);
 	}
 	/**
 	 * Check that the isbn 13 chars is correct
