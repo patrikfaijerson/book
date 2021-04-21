@@ -32,11 +32,13 @@ class Book{
      * @return if isbn is valid
      */
     public boolean checkIban(String isbn){
+        if (isbn != null){
+        
         int length = isbn.length();
         if(length == 10 || length == 13){
             return true;
         }
-
+    }
         return false;
         
     } 

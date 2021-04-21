@@ -40,5 +40,26 @@ class BookTest {
 		assertFalse(isIsbnOk);
 
 }
+	/**
+	 * Check that the isbn empty returns false
+	 */
+	@Test
+	void verifyIsbnEmptyIsNotOK() {
+		Book book1 = new Book();
+		boolean isIsbnOk = book1.checkIban("");
+		assertFalse(isIsbnOk);
+
+}
+
+/**
+	 * Check that the isbn null returns false
+	 */
+	@Test
+	void verifyIsbnNullIsNotOK() {
+		Book book1 = new Book();
+		boolean isIsbnOk = book1.checkIban(null);
+		assertTrue(isIsbnOk);
+
+}
 
 }
