@@ -3,8 +3,6 @@ package com.example.inlupp3;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.example.inlupp3.Book;
-
 import org.junit.jupiter.api.Test;
 
 class BookTest {
@@ -16,7 +14,7 @@ class BookTest {
 	@Test
 	void verifyIsbnTenDigitsIsOK() {
 		Book book1 = new Book();
-		boolean isIsbnOk = book1.checkIban("1234567890");
+		boolean isIsbnOk = book1.checkIsbn("1234567890");
 		assertTrue(isIsbnOk);
 	}
 	/**
@@ -25,7 +23,7 @@ class BookTest {
 		@Test
 		void verifyIsbnThirteenDigitsIsOK() {
 			Book book1 = new Book();
-			boolean isIsbnOk = book1.checkIban("1234567890123");
+			boolean isIsbnOk = book1.checkIsbn("1234567890123");
 			assertTrue(isIsbnOk);
 	
 	}
@@ -36,7 +34,7 @@ class BookTest {
 	@Test
 	void verifyIsbnElevenDigitsIsNotOK() {
 		Book book1 = new Book();
-		boolean isIsbnOk = book1.checkIban("12345678901");
+		boolean isIsbnOk = book1.checkIsbn("12345678901");
 		assertFalse(isIsbnOk);
 
 }
@@ -46,7 +44,7 @@ class BookTest {
 	@Test
 	void verifyIsbnEmptyIsNotOK() {
 		Book book1 = new Book();
-		boolean isIsbnOk = book1.checkIban("");
+		boolean isIsbnOk = book1.checkIsbn("");
 		assertFalse(isIsbnOk);
 
 }
@@ -57,7 +55,7 @@ class BookTest {
 	@Test
 	void verifyIsbnNullIsNotOK() {
 		Book book1 = new Book();
-		boolean isIsbnOk = book1.checkIban(null);
+		boolean isIsbnOk = book1.checkIsbn(null);
 		assertFalse(isIsbnOk);
 
 }

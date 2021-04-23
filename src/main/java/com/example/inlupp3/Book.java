@@ -31,7 +31,7 @@ class Book{
      * @param isbn the isbn
      * @return if isbn is valid
      */
-    public boolean checkIban(String isbn){
+    public boolean checkIsbn(String isbn){
         if (isbn != null){
         
         int length = isbn.length();

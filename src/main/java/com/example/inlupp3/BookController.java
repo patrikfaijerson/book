@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,6 +42,7 @@ public class BookController {
     @PutMapping(path = "/book/{id}", consumes="application/json", produces="application/json")
     @CrossOrigin
         Book updateBook(@PathVariable Integer id, @RequestBody Book bookToUpdate){
+            
             Book savedBook = bookRepository.findById(id).get();
             savedBook.setIsbn(bookToUpdate.getIsbn());
             savedBook.setTitle(bookToUpdate.getTitle());
@@ -50,7 +52,12 @@ public class BookController {
     }
 
     @PostMapping(path = "/book", consumes="application/json", produces="application/json")
-        ResponseEntity<Book> createBook(@RequestBody Book bookToCreate){
+        ResponseEntity<?> createBook(@RequestBody Book bookToCreate){
+            boolean isbnOk = bookToCreate.checkIsbn(bookToCreate.getIsbn());
+            if(!isbnOk){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Isbn must be either 10 or 13 digits");
+            }
+         
             bookRepository.save(bookToCreate);
 
             URI location = ServletUriComponentsBuilder.fromCurrentRequest()
