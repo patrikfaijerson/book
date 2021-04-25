@@ -25,6 +25,7 @@ public class BookController {
     private BookRepository bookRepository;
 
     @GetMapping(path = "/book")
+    @CrossOrigin
     List<Book> getAll() {
         List<Book> books = new ArrayList<>();
         for (Book p : bookRepository.findAll()) {
@@ -35,6 +36,7 @@ public class BookController {
 
     
     @GetMapping(path = "/book/{id}")
+    @CrossOrigin
     Optional<Book> getBookById(@PathVariable Integer id) {
         return bookRepository.findById(id);
     }
@@ -47,11 +49,13 @@ public class BookController {
             savedBook.setIsbn(bookToUpdate.getIsbn());
             savedBook.setTitle(bookToUpdate.getTitle());
             savedBook.setAuthor(bookToUpdate.getAuthor());
+            savedBook.setBookstoreId(bookToUpdate.getBookstoreId());
             bookRepository.save(savedBook);
             return savedBook;
     }
 
     @PostMapping(path = "/book", consumes="application/json", produces="application/json")
+    @CrossOrigin
         ResponseEntity<?> createBook(@RequestBody Book bookToCreate){
             boolean isbnOk = bookToCreate.checkIsbn(bookToCreate.getIsbn());
             if(!isbnOk){
@@ -69,6 +73,7 @@ public class BookController {
     }
 
     @DeleteMapping(path = "/book/{id}")
+    @CrossOrigin
     void deleteBook(@PathVariable Integer id){
         bookRepository.deleteById(id);
 }

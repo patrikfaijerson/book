@@ -15,15 +15,18 @@ class Book{
     private String isbn;
     private String title;
     private String author;
+    private String bookstoreId;
    
     
 
     public Book(){}
 
-    public Book(String isbn, String title, String author){
+    public Book(String isbn, String title, String author, String bookstoreId){
         this.isbn = isbn;
         this.title = title;
         this.author = author;
+        this.bookstoreId = bookstoreId;
+
     }
 
     /**
@@ -59,6 +62,10 @@ class Book{
         return author;
     }
 
+    public String getBookstoreId() {
+        return bookstoreId;
+    }
+
    public void setId(Integer id) {
        this.id = id;
    }
@@ -75,6 +82,9 @@ class Book{
         this.author = author;
     }
 
+    public void setBookstoreId(String bookstoreId) {
+        this.bookstoreId = bookstoreId;
+    }
  
 
 
